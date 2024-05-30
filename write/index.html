@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>recipe</title>
+    <link rel="stylesheet" href="recipe.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      .article-container {
+        display: flex;
+        justify-content: center;
+        gap: 1.6rem;
+      }
+      .md-container {
+        flex: 1 1;
+        max-width: 1012px;
+        width: 100%;
+        font-family: "Noto Sans KR", -apple-system, BlinkMacSystemFont,
+          "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji",
+          "Segoe UI Emoji", "Segoe UI Symbol";
+        font-size: calc(1rem * 2);
+        line-height: 1.5;
+        color: #24292e;
+        background-color: #fff;
+        word-wrap: break-word;
+        padding: 0 calc(1rem * 1.6);
+      }      
+      .toc-bar {
+        width: 200px;
+      }
+      .toc-container {
+        position: sticky;
+        top: 100px;
+        cursor: pointer;
+      }
+      .toc-title {
+        padding-left: 10px;
+        font-size: 18px;
+        font-weight: bold;
+        color: cadetblue;
+      }
+      .toc-item {
+        padding: 5px 10px;
+        list-style: none;
+        font-size: 15px;
+        color: black;
+        border-left: 3px solid rgb(171, 171, 171);
+      }
+      .toc-title.selected, .toc-item.selected {
+        background-color: rgba(95, 158, 160, 0.3);
+        color: black;
+        border-left: 3px solid cadetblue;
+      }
+      article {
+        width: 70%;
+      }
+      h1 {
+        background-color: cadetblue;
+      }
+      h2 {
+        background-color: aquamarine;
+      }
+      p {
+        background-color: beige;
+        height: 2000px;
+      }
+      div > article {
+        float: left;
+        width: 30%;
+        margin-left: 10px;
+        margin-bottom: 10px;
+      }
+      img {
+        display: block;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <aside class="side-bar">
+      <section class="side-bar__icon-box">
+        <section class="side-bar__icon-1">
+          <div></div>
+          <div></div>
+          <div></div>
+        </section>
+      </section>
+      <ul>
+        <li>
+          <a href="#">나만의 레시피</a>
+          <ul>
+            <li>
+              <a href="#" onclick="showImages('나만의 레시피', '한식')">한식</a>
+            </li>
+            <li>
+              <a href="#" onclick="showImages('나만의 레시피', '중식')">중식</a>
+            </li>
+            <li>
+              <a href="#" onclick="showImages('나만의 레시피', '양식')">양식</a>
+            </li>
+            <li>
+              <a href="#" onclick="showImages('나만의 레시피', '일식')">일식</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">남의 레시피</a>
+          <ul>
+            <li>
+              <a href="#" onclick="showImages('남의 레시피', '한식')">한식</a>
+            </li>
+            <li>
+              <a href="#" onclick="showImages('남의 레시피', '중식')">중식</a>
+            </li>
+            <li>
+              <a href="#" onclick="showImages('남의 레시피', '양식')">양식</a>
+            </li>
+            <li>
+              <a href="#" onclick="showImages('남의 레시피', '일식')">일식</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </aside>
+    <div class="article-container">
+      <div class="md-container">
+        <h1>코끼리 위키백과</h1>
+        <p>
+          코끼리(elephant, 象)는 장비목에서 유일하게 현존하는 코끼리과를
+          구성하는 동물들의 총칭이다.
+        </p>
+
+        <h2>1. 어원</h2>
+        <p>
+          ‘코끼리’는 ‘코가 긴 것, 코가 긴 짐승’이라는 뜻으로 ‘고ㅎ + 길- +
+          -이’의 구성으로 만들어진 것이다.
+        </p>
+
+        <h2>2. 코끼리의 몸</h2>
+        <h3>다리</h3>
+        <p>
+          몸 표면에는 굵은 털이 전체에 조잡하게 나 있으며, 꼬리 끝에는 줄모양의
+          긴 털이 나 있다.
+        </p>
+        <h3>코</h3>
+        <p>코끼리의 코는 가장 활용을 많이하는 수단이다.</p>
+
+        <h2>3. 생태</h2>
+        <p>코끼리는 일반적으로 30~40마리씩 무리를 짓고 산다.</p>
+
+        <h2>4. 인간과의 관계</h2>
+        <p>사람들은 수천 년 전부터 코끼리를 길들여 이용했다.</p>
+      </div>
+      <aside class="toc-bar">
+        <div class="toc-container"></div>
+      </aside>
+      </div>
+    </div>
+    <script>
+      const tags = document.querySelectorAll('h1,h2')
+      const toc = document.querySelector('.toc-container')
+
+tags.forEach(tag => {
+  if (tag.matches('h1')) {
+    const ul = document.createElement('ul')
+    ul.classList.add('toc-title')
+    ul.textContent = tag.textContent
+    toc.appendChild(ul)
+  }
+  else {
+    const li = document.createElement('li')
+    li.classList.add('toc-item')
+    li.textContent = tag.textContent
+    toc.firstElementChild.appendChild(li)
+  }
+})
+const tocItems = document.querySelectorAll('.toc-title, .toc-item')
+tocItems.forEach((item, index) => item.dataset.index = index),
+tags.forEach((tag, index) => tag.dataset.index = index)
+
+toc.addEventListener('click', e => {
+  if (e.target.matches('.toc-title') || e.target.matches('.toc-item')) {
+    tags[e.target.dataset.index].scrollIntoView({ behavior: "smooth"})
+  }
+})
+let selectedIndex = 0
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      tocItems[selectedIndex].classList.remove('selected')
+      selectedIndex = entry.target.dataset.index
+      tocItems[selectedIndex].classList.add('selected')
+    }   
+    else if(entry.boundingClientRect.y > 100) {
+      tocItems[selectedIndex].classList.remove('selected')
+      selectedIndex = Number(entry.target.dataset.index) - 1
+      tocItems[selectedIndex].classList.add('selected')
+    }
+  })
+})
+
+tags.forEach(tag => observer.observe(tag))
+
+tags.forEach(tag => observer.observe(tag))
+
+    </script>
+  </body>
+</html>

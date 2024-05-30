@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>recipe</title>
+    <link rel="stylesheet" href="recipe.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      #wrap {
+        width: 960px;
+        margin: 0 auto;
+        overflow: hidden;
+        padding-top: 10px;
+        display: none;
+      }
+      div > article {
+        float: left;
+        width: 30%;
+        margin-left: 10px;
+        margin-bottom: 10px;
+      }
+      img {
+        display: block;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <aside class="side-bar">
+      <section class="side-bar__icon-box">
+        <section class="side-bar__icon-1">
+          <div></div>
+          <div></div>
+          <div></div>
+        </section>
+      </section>
+      <ul>
+        <li>
+          <a href="#">나만의 레시피</a>
+          <ul>
+            <li>
+              <a href="#" onclick="showImages('나만의 레시피', '한식')">한식</a>
+            </li>
+            <li>
+              <a href="#" onclick="showImages('나만의 레시피', '중식')">중식</a>
+            </li>
+            <li>
+              <a href="#" onclick="showImages('나만의 레시피', '양식')">양식</a>
+            </li>
+            <li>
+              <a href="#" onclick="showImages('나만의 레시피', '일식')">일식</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">남의 레시피</a>
+          <ul>
+            <li>
+              <a href="#" onclick="showImages('남의 레시피', '한식')">한식</a>
+            </li>
+            <li>
+              <a href="#" onclick="showImages('남의 레시피', '중식')">중식</a>
+            </li>
+            <li>
+              <a href="#" onclick="showImages('남의 레시피', '양식')">양식</a>
+            </li>
+            <li>
+              <a href="#" onclick="showImages('남의 레시피', '일식')">일식</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </aside>
+
+    <div id="wrap"></div>
+
+    <script>
+      const images = {
+        "나만의 레시피": {
+          한식: [
+            "레시피 이미지/한식/떡볶이.jpg",
+            "레시피 이미지/한식/소갈비찜.jpg",
+            "레시피 이미지/한식/돼지고기김치찌개.jpg",
+            "레시피 이미지/한식/청국장.jpg",
+            "레시피 이미지/한식/돼지고기수육.jpg",
+            "레시피 이미지/한식/소불고기.jpg",
+            "레시피 이미지/한식/잡채.jpg",
+            "레시피 이미지/한식/무생채.jpg",
+            "레시피 이미지/한식/전복죽.jpg",
+            "레시피 이미지/한식/찜닭.jpg",
+            "레시피 이미지/한식/오므라이스.jpg",
+            "레시피 이미지/한식/두부조림.jpg",
+            "레시피 이미지/한식/동태찌개.jpg",
+            "레시피 이미지/한식/김치볶음밥.jpg",
+            "레시피 이미지/한식/부추전.jpg",
+          ],
+          중식: [
+            "http://placehold.it/320x280?text=MyChinese1",
+            "http://placehold.it/320x280?text=MyChinese2",
+            "http://placehold.it/320x280?text=MyChinese3",
+            "http://placehold.it/320x280?text=MyChinese4",
+            "http://placehold.it/320x280?text=MyChinese5",
+            "http://placehold.it/320x280?text=MyChinese6",
+            "http://placehold.it/320x280?text=MyChinese7",
+            "http://placehold.it/320x280?text=MyChinese8",
+            "http://placehold.it/320x280?text=MyChinese9",
+            "http://placehold.it/320x280?text=MyChinese10",
+            "http://placehold.it/320x280?text=MyChinese11",
+            "http://placehold.it/320x280?text=MyChinese12",
+            "http://placehold.it/320x280?text=MyChinese13",
+            "http://placehold.it/320x280?text=MyChinese14",
+            "http://placehold.it/320x280?text=MyChinese15",
+          ],
+          양식: [
+            "http://placehold.it/320x280?text=MyWestern1",
+            "http://placehold.it/320x280?text=MyWestern2",
+            "http://placehold.it/320x280?text=MyWestern3",
+            "http://placehold.it=320x280?text=MyWestern4",
+            "http://placehold.it=320x280?text=MyWestern5",
+            "http://placehold.it=320x280?text=MyWestern6",
+            "http://placehold.it=320x280?text=MyWestern7",
+            "http://placehold.it=320x280?text=MyWestern8",
+            "http://placehold.it=320x280?text=MyWestern9",
+            "http://placehold.it=320x280?text=MyWestern10",
+            "http://placehold.it=320x280?text=MyWestern11",
+            "http://placehold.it=320x280?text=MyWestern12",
+            "http://placehold.it=320x280?text=MyWestern13",
+            "http://placehold.it=320x280?text=MyWestern14",
+            "http://placehold.it=320x280?text=MyWestern15",
+          ],
+          일식: [
+            "http://placehold.it/320x280?text=MyJapanese1",
+            "http://placehold.it/320x280?text=MyJapanese2",
+            "http://placehold.it/320x280?text=MyJapanese3",
+            "http://placehold.it/320x280?text=MyJapanese4",
+            "http://placehold.it/320x280?text=MyJapanese5",
+            "http://placehold.it/320x280?text=MyJapanese6",
+            "http://placehold.it/320x280?text=MyJapanese7",
+            "http://placehold.it/320x280?text=MyJapanese8",
+            "http://placehold.it/320x280?text=MyJapanese9",
+            "http://placehold.it/320x280?text=MyJapanese10",
+            "http://placehold.it/320x280?text=MyJapanese11",
+            "http://placehold.it/320x280?text=MyJapanese12",
+            "http://placehold.it/320x280?text=MyJapanese13",
+            "http://placehold.it/320x280?text=MyJapanese14",
+            "http://placehold.it/320x280?text=MyJapanese15",
+          ],
+        },
+        "남의 레시피": {
+          한식: [
+            "http://placehold.it/320x280?text=OtherKorean1",
+            "http://placehold.it/320x280?text=OtherKorean2",
+            "http://placehold.it/320x280?text=OtherKorean3",
+            "http://placehold.it/320x280?text=OtherKorean4",
+            "http://placehold.it/320x280?text=OtherKorean5",
+            "http://placehold.it/320x280?text=OtherKorean6",
+            "http://placehold.it/320x280?text=OtherKorean7",
+            "http://placehold.it/320x280?text=OtherKorean8",
+            "http://placehold.it/320x280?text=OtherKorean9",
+            "http://placehold.it/320x280?text=OtherKorean10",
+            "http://placehold.it/320x280?text=OtherKorean11",
+            "http://placehold.it/320x280?text=OtherKorean12",
+            "http://placehold.it/320x280?text=OtherKorean13",
+            "http://placehold.it/320x280?text=OtherKorean14",
+            "http://placehold.it/320x280?text=OtherKorean15",
+          ],
+          중식: [
+            "http://placehold.it/320x280?text=OtherChinese1",
+            "http://placehold.it/320x280?text=OtherChinese2",
+            "http://placehold.it/320x280?text=OtherChinese3",
+            "http://placehold.it/320x280?text=OtherChinese4",
+            "http://placehold.it/320x280?text=OtherChinese5",
+            "http://placehold.it/320x280?text=OtherChinese6",
+            "http://placehold.it/320x280?text=OtherChinese7",
+            "http://placehold.it/320x280?text=OtherChinese8",
+            "http://placehold.it/320x280?text=OtherChinese9",
+            "http://placehold.it/320x280?text=OtherChinese10",
+            "http://placehold.it/320x280?text=OtherChinese11",
+            "http://placehold.it/320x280?text=OtherChinese12",
+            "http://placehold.it/320x280?text=OtherChinese13",
+            "http://placehold.it/320x280?text=OtherChinese14",
+            "http://placehold.it/320x280?text=OtherChinese15",
+          ],
+          양식: [
+            "http://placehold.it/320x280?text=OtherWestern1",
+            "http://placehold.it/320x280?text=OtherWestern2",
+            "http://placehold.it/320x280?text=OtherWestern3",
+            "http://placehold.it=320x280?text=OtherWestern4",
+            "http://placehold.it=320x280?text=OtherWestern5",
+            "http://placehold.it=320x280?text=OtherWestern6",
+            "http://placehold.it=320x280?text=OtherWestern7",
+            "http://placehold.it=320x280?text=OtherWestern8",
+            "http://placehold.it=320x280?text=OtherWestern9",
+            "http://placehold.it=320x280?text=OtherWestern10",
+            "http://placehold.it=320x280?text=OtherWestern11",
+            "http://placehold.it=320x280?text=OtherWestern12",
+            "http://placehold.it=320x280?text=OtherWestern13",
+            "http://placehold.it=320x280?text=OtherWestern14",
+            "http://placehold.it=320x280?text=OtherWestern15",
+          ],
+          일식: [
+            "http://placehold.it/320x280?text=OtherJapanese1",
+            "http://placehold.it/320x280?text=OtherJapanese2",
+            "http://placehold.it/320x280?text=OtherJapanese3",
+            "http://placehold.it/320x280?text=OtherJapanese4",
+            "http://placehold.it/320x280?text=OtherJapanese5",
+            "http://placehold.it/320x280?text=OtherJapanese6",
+            "http://placehold.it/320x280?text=OtherJapanese7",
+            "http://placehold.it/320x280?text=OtherJapanese8",
+            "http://placehold.it/320x280?text=OtherJapanese9",
+            "http://placehold.it/320x280?text=OtherJapanese10",
+            "http://placehold.it/320x280?text=OtherJapanese11",
+            "http://placehold.it/320x280?text=OtherJapanese12",
+            "http://placehold.it/320x280?text=OtherJapanese13",
+            "http://placehold.it/320x280?text=OtherJapanese14",
+            "http://placehold.it/320x280?text=OtherJapanese15",
+          ],
+        },
+      };
+      const descriptions = {
+        한식: [
+          [
+            "떡볶이",
+            "매콤한 소스에 쫄깃한 떡이 어우러진 전통 한국 떡요리입니다.",
+          ],
+          [
+            "소갈비찜",
+            "소갈비찜의 소스는 진한 맛을 낸다. 고기의 식감은 너무 좋아서 여러번 만들고 싶은 요리입니다.",
+          ],
+          [
+            "돼지고기김치찌개",
+            "김치찌개는 한국인의 마음속 깊은 곳을 통틀어 든든함을 떠올리게 하는 음식입니다.",
+          ],
+          [
+            "청국장",
+            "한국 전통 발효식품 중 하나인 청국장은 풍부한 영양소를 함유하고 있어 건강에 좋은 음식입니다.",
+          ],
+          [
+            "돼지고기수육",
+            "고기의 풍미와 부드러움이 일품인 돼지고기 수육은 한국의 대표적인 고기요리 중 하나입니다.",
+          ],
+          [
+            "소불고기",
+            "매콤한 양념에 불에 구운 소고기의 맛은 일품이죠. 소불고기는 한식 중에서도 특히 유명한 음식입니다.",
+          ],
+          [
+            "잡채",
+            "다양한 채소와 고기를 함께 볶은 잡채는 맑은 소스와 어우러져 상큼하고 맛있는 한국 요리입니다.",
+          ],
+          [
+            "무생채",
+            "채썬 무를 간장과 함께 담근 무생채는 한국식 반찬 중 하나로 시원한 맛과 아삭한 식감이 일품입니다.",
+          ],
+          [
+            "전복죽",
+            "전복의 깊은 맛과 죽의 부드러움이 어우러진 전복죽은 한국의 대표적인 아침 식사 메뉴입니다.",
+          ],
+          [
+            "찜닭",
+            "매콤한 양념에 찜한 닭고기는 쫄깃하고 맛있어 한국 가정에서 자주 먹는 음식 중 하나입니다.",
+          ],
+          [
+            "오므라이스",
+            "달걀 볶음밥 위에 양파와 당근 등을 넣어 만든 오므라이스는 한국인들이 좋아하는 양식 메뉴입니다.",
+          ],
+          [
+            "두부조림",
+            "간장과 설탕으로 달콤하게 조린 두부조림은 부드럽고 고소한 맛이 일품인 한국식 반찬입니다.",
+          ],
+          [
+            "동태찌개",
+            "톡 쏘는 맛과 향긋한 향이 일품인 동태찌개는 한국의 대표적인 해물 요리 중 하나입니다.",
+          ],
+          [
+            "김치볶음밥",
+            "김치와 밥을 볶아 만든 김치볶음밥은 간단하면서도 맛있는 한국의 대표적인 밥 메뉴입니다.",
+          ],
+          [
+            "부추전",
+            "부추와 밀가루를 섞어 부친 부추전은 바삭하면서도 고소한 맛이 일품인 한국식 전입니다.",
+          ],
+        ],
+
+        중식: [
+          ["MyChinese1", "Description for MyChinese1"],
+          ["MyChinese2", "Description for MyChinese2"],
+          ["MyChinese3", "Description for MyChinese3"],
+          ["MyChinese4", "Description for MyChinese4"],
+          ["MyChinese5", "Description for MyChinese5"],
+          ["MyChinese6", "Description for MyChinese6"],
+          ["MyChinese7", "Description for MyChinese7"],
+          ["MyChinese8", "Description for MyChinese8"],
+          ["MyChinese9", "Description for MyChinese9"],
+          ["MyChinese10", "Description for MyChinese10"],
+          ["MyChinese11", "Description for MyChinese11"],
+          ["MyChinese12", "Description for MyChinese12"],
+          ["MyChinese13", "Description for MyChinese13"],
+          ["MyChinese14", "Description for MyChinese14"],
+          ["MyChinese15", "Description for MyChinese15"],
+        ],
+        양식: [
+          ["MyWestern1", "Description for MyWestern1"],
+          ["MyWestern2", "Description for MyWestern2"],
+          ["MyWestern3", "Description for MyWestern3"],
+          ["MyWestern4", "Description for MyWestern4"],
+          ["MyWestern5", "Description for MyWestern5"],
+          ["MyWestern6", "Description for MyWestern6"],
+          ["MyWestern7", "Description for MyWestern7"],
+          ["MyWestern8", "Description for MyWestern8"],
+          ["MyWestern9", "Description for MyWestern9"],
+          ["MyWestern10", "Description for MyWestern10"],
+          ["MyWestern11", "Description for MyWestern11"],
+          ["MyWestern12", "Description for MyWestern12"],
+          ["MyWestern13", "Description for MyWestern13"],
+          ["MyWestern14", "Description for MyWestern14"],
+          ["MyWestern15", "Description for MyWestern15"],
+        ],
+        일식: [
+          ["MyJapanese1", "Description for MyJapanese1"],
+          ["MyJapanese2", "Description for MyJapanese2"],
+          ["MyJapanese3", "Description for MyJapanese3"],
+          ["MyJapanese4", "Description for MyJapanese4"],
+          ["MyJapanese5", "Description for MyJapanese5"],
+          ["MyJapanese6", "Description for MyJapanese6"],
+          ["MyJapanese7", "Description for MyJapanese7"],
+          ["MyJapanese8", "Description for MyJapanese8"],
+          ["MyJapanese9", "Description for MyJapanese9"],
+          ["MyJapanese10", "Description for MyJapanese10"],
+          ["MyJapanese11", "Description for MyJapanese11"],
+          ["MyJapanese12", "Description for MyJapanese12"],
+          ["MyJapanese13", "Description for MyJapanese13"],
+          ["MyJapanese14", "Description for MyJapanese14"],
+          ["MyJapanese15", "Description for MyJapanese15"],
+        ],
+      };
+
+      function showImages(category, type) {
+        document.getElementById("wrap").style.display = "block";
+        const selectedImages = images[category][type];
+        const descriptionList = descriptions[type];
+
+        document.getElementById("wrap").innerHTML = selectedImages
+          .map((src, index) => {
+            const foodName = descriptionList[index][0];
+            const description = descriptionList[index][1];
+            return `
+        <article>
+          <img src="${src}" alt="${foodName}">
+          <h3>${foodName}</h3>
+          <p>${description}</p>
+        </article>
+      `;
+          })
+          .join("");
+        console.log(`Showing images for ${category} - ${type}`);
+      }
+    </script>
+  </body>
+</html>
