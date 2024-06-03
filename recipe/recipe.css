@@ -1,0 +1,45 @@
+
+.goCenter {
+  align-items: center;
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.post-container {
+  width: 90%;
+  max-width: 500px;
+  background-color: #fff;
+  margin: 20px 0;
+  border: 1px solid black;;
+  border-radius: 10px;
+  box-shadow: 0px 5px 10px rgba(78, 136, 255, 0.3);
+  overflow: hidden;
+  
+  }
+
+.post-image {
+  width: 100%;
+  display: block;
+}
+.post-content {
+  padding: 15px;
+}
+.post-content h1, .post-content h2 {
+  margin: 10px 0;
+}
+.post-content p {
+  margin: 5px 0;
+}
+
+#bookmark-button {
+  width: 80px;
+  height: 40px;
+  font-size: 24px; /* 아이콘 크기 조정 */
+  color: #e57373;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}

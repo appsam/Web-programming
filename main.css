@@ -1,0 +1,195 @@
+/* main.css */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+
+body,
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+body {
+  height: 1200px;
+  background-color: #fff;
+  padding: 10px;
+  overflow: auto;
+}
+
+.main-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 42px;
+  text-align: center;
+  color: rgb(var(--color_18));
+  letter-spacing: normal;
+  line-height: normal;
+  margin: auto;
+  max-width: 80%;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+div > article {
+  position: relative;
+  width: calc(25% - 20px);
+  margin-bottom: 20px;
+  margin-left: 10px;
+  margin-right: 20px;
+  z-index: 1;
+}
+
+img[src$=".jpg"] {
+  width: 320px;
+  height: 170px;
+  object-fit: cover;
+  max-width: 100%;
+  max-height: 100%;
+  transition: transform 0.5s;
+}
+
+img[src$=".jpg"]:hover {
+  transform: scale(1.3);
+}
+
+.main-content {
+  margin-left: var(--side-bar-width);
+  text-align: center;
+}
+
+.main-story {
+  overflow: hidden;
+}
+
+#add,
+#remove {
+  font-size: 20px;
+  font-weight: bolder;
+  cursor: pointer;
+  width: auto;
+  height: 40px;
+  background-color: black;
+  color: white;
+  border-radius: 10px;
+  transition: background-color 0.3s, opacity 0.3s;
+}
+
+.menu-box {
+  background-image: url('메뉴판.png');
+  background-size: cover;
+  background-position: center;
+  width: 900px;
+  height: 1300px;
+  margin: 0 auto;
+  background-repeat: no-repeat;
+}
+
+.menu-title {
+  font-size: 3em;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  color: #333;
+  position: relative;
+  top: 150px;
+}
+
+.category {
+  text-align: left;
+  margin-left: 100px;
+  margin-top: 170px;
+}
+
+.menu-box img[src$=".jpg"] {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  max-width: 100%;
+  transition: transform 0.5s;
+}
+
+.menu-box img[src$=".jpg"]:hover {
+  transform: scale(1.3);
+}
+
+.bookmark-item {
+  padding: 10px;
+  border-bottom: 1px solid #dbdbdb;
+  display: flex;
+  align-items: center;
+}
+
+.bookmark-item a {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  flex-grow: 1;
+}
+
+.bookmark-item button {
+  background: none;
+  border: none;
+  color: #ff4757;
+  font-size: 1em;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+/* 반응형 디자인 추가 */
+@media (max-width: 768px) {
+  .main-title {
+    font-size: 32px;
+  }
+
+  div > article {
+    width: calc(50% - 20px);
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+
+  .menu-box {
+    width: 100%;
+    height: auto;
+  }
+
+  .menu-title {
+    font-size: 2em;
+    top: 50px;
+  }
+
+  .category {
+    margin-left: 20px;
+    margin-top: 20px;
+  }
+
+  .bookmark-item a {
+    font-size: 1em;
+  }
+
+  .bookmark-item button {
+    font-size: 0.9em;
+  }
+}
+
+@media (max-width: 480px) {
+  div > article {
+    width: 100%;
+    margin: 5px 0;
+  }
+
+  .main-title {
+    font-size: 24px;
+  }
+
+  .bookmark-item a {
+    font-size: 0.9em;
+  }
+
+  .bookmark-item button {
+    font-size: 0.8em;
+  }
+}
