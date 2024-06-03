@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>나만의 레시피 저장소</title>
+    <link rel="stylesheet" href="main.css" />
+    <link rel="stylesheet" href="sideBar.css" />
+    <script src="main.js" defer></script>
+    <script src="sideBar.js" defer></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="bookmark.js" defer></script>
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <style>
+      #wrap {
+        width: 960px;
+        margin: 0 auto;
+        overflow: hidden;
+        padding-top: 10px;
+        display: none;
+      }
+      div > article {
+        float: left;
+        width: 30%;
+        flex-basis: 30%;
+        margin-left: 10px;
+        margin-bottom: 10px;
+      }
+      img {
+        display: block;
+        width: 100%;
+      }
+
+      /* 반응형 디자인 추가 */
+      @media (max-width: 768px) {
+        #wrap {
+          width: 100%;
+          padding: 0 10px;
+        }
+        div > article {
+          width: calc(50% - 20px);
+          margin-left: 5px;
+          margin-right: 5px;
+        }
+      }
+      @media (max-width: 480px) {
+        div > article {
+          width: 100%;
+          margin: 5px 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="bar"></div>
+    <div id="wrap"></div>
+
+    <div class="main-content">
+      <div class="main-title"><b>My Recipe Repository</b></div>
+      <div class="divider"></div>
+      <div class="menu-box">
+        <h1 class="menu-title">Your food</h1>
+        <div class="category-box">
+          <div class="category">
+            <h2>한식</h2>
+            <p class="recent-recipe" id="korean"></p>
+          </div>
+          <div class="category">
+            <h2>양식</h2>
+            <p class="recent-recipe" id="western"></p>
+          </div>
+          <div class="category">
+            <h2>일식</h2>
+            <p class="recent-recipe" id="japanese"></p>
+          </div>
+          <div class="category">
+            <h2>중식</h2>
+            <p class="recent-recipe" id="chinese"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      const element1 = document.querySelector(".main-title");
+      element1.classList.add("animate__animated", "animate__backInDown");
+      const element2 = document.querySelector(".menu-box");
+      element2.classList.add("animate__animated", "animate__rubberBand");
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const category = localStorage.getItem('selectedCategory');
+        const type = localStorage.getItem('selectedType');
+  
+        if (category && type) {
+          showImages(category, type);
+          localStorage.removeItem('selectedCategory');
+          localStorage.removeItem('selectedType');
+        }
+      });
+    </script>
+  </body>
+</html>
